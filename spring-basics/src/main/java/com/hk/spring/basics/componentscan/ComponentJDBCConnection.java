@@ -10,6 +10,6 @@ import org.springframework.stereotype.Component;
 public class ComponentJDBCConnection {
 
 	public ComponentJDBCConnection() {
-		System.out.println("JDBC Connection");
+		System.out.println("Component JDBC Connection");
 	}
 }
