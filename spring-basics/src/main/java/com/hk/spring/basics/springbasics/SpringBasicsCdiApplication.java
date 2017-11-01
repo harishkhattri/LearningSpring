@@ -6,22 +6,22 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.hk.spring.basics.componentscan.ComponentDAO;
+import com.hk.spring.basics.springbasics.cdi.SomeCdiBusiness;
 
 @Configuration
-@ComponentScan("com.hk.spring.basics.componentscan")
-public class SpringBasicsComponentScanApplication {
+@ComponentScan
+public class SpringBasicsCdiApplication {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(SpringBasicsComponentScanApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(SpringBasicsCdiApplication.class);
 
 	public static void main(String[] args) {
 
 		try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
-				SpringBasicsComponentScanApplication.class)) {
+				SpringBasicsCdiApplication.class)) {
 
-			ComponentDAO componentDAO = applicationContext.getBean(ComponentDAO.class);
+			SomeCdiBusiness business = applicationContext.getBean(SomeCdiBusiness.class);
 
-			LOGGER.info("{}", componentDAO);
+			LOGGER.info("{} dao-{}", business, business.getSomeCdiDao());
 		}
 	}
 }
