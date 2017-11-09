@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
-	// private UserValidationService service;
+	private UserValidationService service = new UserValidationService();
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,9 +25,9 @@ public class LoginServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 
-		// boolean isUserValid = service.isUserValid(name, password);
+		boolean isUserValid = service.isUserValid(name, password);
 
-		if (name.equals("Harish") && password.equals("khattri")) {
+		if (isUserValid) {
 			request.setAttribute("name", name);
 			request.setAttribute("password", password);
 			request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
